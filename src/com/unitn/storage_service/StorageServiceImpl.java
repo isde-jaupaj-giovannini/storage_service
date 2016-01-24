@@ -27,7 +27,7 @@ public class StorageServiceImpl implements StorageService {
         if (HOSTNAME.equals("127.0.0.1")) {
             HOSTNAME = "localhost";
         }
-        String PORT = "6902";
+        String PORT = "6903";
         String BASE_URL = "/ws/storage";
 
         if (String.valueOf(System.getenv("PORT")) != "null") {
