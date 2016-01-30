@@ -1,10 +1,16 @@
 package com.unitn.storage_service;
 
+import com.unitn.local_database.LocalDB;
+import com.unitn.local_database.LocalDatabase;
+import com.unitn.local_database.MeasureData;
+import com.unitn.local_database.UserData;
+
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * Created by erinda on 1/19/16.
@@ -13,12 +19,37 @@ import java.net.URISyntaxException;
              serviceName="Storage")
 public class StorageServiceImpl implements StorageService {
 
+    LocalDB localDB = new LocalDatabase().getLocalDBImplPort();
 
     @Override
     public String getDescription() {
         return "TEST";
     }
 
+    @Override
+    public void saveData(MeasureData md) {
+        localDB.saveData(md);
+    }
+
+    @Override
+    public List<MeasureData> getLatestData(int telegramId, int limit) {
+        return localDB.getLatestData(telegramId, limit);
+    }
+
+    @Override
+    public boolean userExists(int telegramId) {
+        return localDB.userExists(telegramId);
+    }
+
+    @Override
+    public UserData getUser(int telegramId) {
+        return localDB.getUser(telegramId);
+    }
+
+    @Override
+    public void createUser(UserData user) {
+        localDB.createUser(user);
+    }
 
 
     public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException {
