@@ -2,6 +2,7 @@ package com.unitn.storage_service;
 
 import com.unitn.local_database.MeasureData;
 import com.unitn.local_database.UserData;
+import com.unitn.storage_service.model.Goal;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
@@ -39,4 +40,8 @@ public interface StorageService {
     @WebMethod()
     @WebResult()
     void createUser(UserData user);
+
+    @WebMethod()
+    @WebResult()
+    boolean saveGoal(int telegramId, Goal goal);
 }

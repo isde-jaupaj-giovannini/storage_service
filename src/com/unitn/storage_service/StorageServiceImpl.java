@@ -2,10 +2,12 @@ package com.unitn.storage_service;
 
 import com.unitn.adapter_service.AdapterService;
 import com.unitn.adapter_service.Project;
+import com.unitn.adapter_service.Task;
 import com.unitn.local_database.LocalDB;
 import com.unitn.local_database.LocalDatabase;
 import com.unitn.local_database.MeasureData;
 import com.unitn.local_database.UserData;
+import com.unitn.storage_service.model.Goal;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
@@ -49,6 +51,20 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public UserData getUser(int telegramId) {
         return localDB.getUser(telegramId);
+    }
+
+    @Override
+    public boolean saveGoal(int telegramId, Goal goal) {
+        UserData user = localDB.getUser(telegramId);
+        Task task = goal.toTask();
+        task.setProjectId(user.getProjectId());
+        try {
+            task = adapterService.createTask(task).execute().body();
+            return task.getId() > 0;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override

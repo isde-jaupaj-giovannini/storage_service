@@ -1,12 +1,20 @@
 package com.unitn.adapter_service;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by demiurgo on 1/30/16.
  */
 
 @Data
+@NoArgsConstructor
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Task {
     public long Id;
     public String Content;
