@@ -1,5 +1,7 @@
 package com.unitn.storage_service;
 
+import com.unitn.adapter_service.AdapterService;
+import com.unitn.adapter_service.Project;
 import com.unitn.local_database.LocalDB;
 import com.unitn.local_database.LocalDatabase;
 import com.unitn.local_database.MeasureData;
@@ -10,6 +12,7 @@ import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URISyntaxException;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -20,6 +23,8 @@ import java.util.List;
 public class StorageServiceImpl implements StorageService {
 
     LocalDB localDB = new LocalDatabase().getLocalDBImplPort();
+    AdapterService adapterService = AdapterService.createAdapterService();
+
 
     @Override
     public String getDescription() {
@@ -48,7 +53,16 @@ public class StorageServiceImpl implements StorageService {
 
     @Override
     public void createUser(UserData user) {
-        localDB.createUser(user);
+        try {
+            Project project = new Project();
+            project.Content = Base64.getEncoder().encodeToString((user.getIdTelegram()+"").getBytes())+"-tasks";
+            project = adapterService.createProject(project).execute().body();
+            user.setProjectId(project.Id);
+            localDB.createUser(user);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
