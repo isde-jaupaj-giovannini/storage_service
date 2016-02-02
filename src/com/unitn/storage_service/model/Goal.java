@@ -4,6 +4,9 @@ import com.unitn.adapter_service.Task;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * Created by erinda on 1/31/16.
  */
@@ -12,13 +15,21 @@ import lombok.Setter;
 public class Goal {
     private String Content;
     private String DueDate;
-
+    static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 
     public Task toTask(){
         Task t = new Task();
         t.setContent(this.Content);
         t.setDueDate(this.DueDate);
 
+        Calendar calendar = Calendar.getInstance();
+        if(DueDate.contains("WEEK")){
+            calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        }else{
+            //DAY
+            calendar.add(Calendar.DAY_OF_WEEK, 1);
+        }
+        t.setDueDate(simpleDateFormat.format(calendar.getTime()));
         return t;
     }
 }

@@ -57,11 +57,9 @@ public class StorageServiceImpl implements StorageService {
     public boolean saveGoal(int telegramId, Goal goal) {
         UserData user = localDB.getUser(telegramId);
         Task task = goal.toTask();
-        System.out.println("task.toString() = " + task.toString());
         task.setProjectId(user.getProjectId());
         try {
             task = adapterService.createTask(task).execute().body();
-            System.out.println("task.toString() = " + task.toString());
             return task.getId() > 0;
         } catch (IOException |  NullPointerException e) {
             e.printStackTrace();
