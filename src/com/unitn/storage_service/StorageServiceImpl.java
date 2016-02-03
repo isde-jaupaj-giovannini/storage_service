@@ -1,6 +1,7 @@
 package com.unitn.storage_service;
 
 import com.unitn.adapter_service.AdapterService;
+import com.unitn.adapter_service.AdapterServiceImpl;
 import com.unitn.adapter_service.Project;
 import com.unitn.adapter_service.Task;
 import com.unitn.local_database.LocalDB;
@@ -25,7 +26,7 @@ import java.util.List;
 public class StorageServiceImpl implements StorageService {
 
     LocalDB localDB = new LocalDatabase().getLocalDBImplPort();
-    AdapterService adapterService = AdapterService.createAdapterService();
+    AdapterService adapterService = AdapterServiceImpl.createAdapterService();
 
 
     @Override

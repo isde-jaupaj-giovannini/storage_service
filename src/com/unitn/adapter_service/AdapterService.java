@@ -1,9 +1,6 @@
 package com.unitn.adapter_service;
 
-import com.google.gson.GsonBuilder;
 import retrofit2.Call;
-import retrofit2.GsonConverterFactory;
-import retrofit2.Retrofit;
 import retrofit2.http.*;
 
 import java.util.List;
@@ -14,7 +11,6 @@ import java.util.List;
 
 
 public interface AdapterService {
-    String BASE_URL = "http://192.168.0.2:5700/";
 
 
     @POST("adapter_service/todo")
@@ -31,12 +27,5 @@ public interface AdapterService {
 
 
 
-    static AdapterService createAdapterService(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                .build();
 
-        return retrofit.create(AdapterService.class);
-    }
 }

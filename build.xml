@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="storage_service" default="run" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="storage_service" default="start" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 
-    <property name="server.url" value="http://192.168.0.2:6904/ws/localdb?wsdl" />
+    <property name="server.url" value="https://nameless-forest-62807.herokuapp.com/ws/localdb?wsdl" />
 
 
     <!-- PART 1: Ivy properties, download, installation and configuration -->
@@ -67,7 +67,9 @@
     </target>
     <target name="install" depends="clean, init, generate-client">
         <echo message="Compile target has been called"/>
-        <javac srcdir="${src.dir}" debug="true" destdir="${build.dir}" classpathref="lib.path.id" includeAntRuntime="false">
+        <javac srcdir="${src.dir}"
+               target="1.7" source="1.7"
+               debug="true" destdir="${build.dir}" classpathref="lib.path.id" includeAntRuntime="false">
         </javac>
         <copy todir="${build.dir}" overwrite="true">
             <fileset dir="${src.dir}">
@@ -76,7 +78,7 @@
             </fileset>
         </copy>
     </target>
-    <target name="run" depends="install">
+    <target name="start" depends="install">
         <echo message="app start introsde.assignment.soap.PeopleImpl in ${build.dir}"/>
         <java classname="com.unitn.storage_service.StorageServiceImpl" classpath="${build.dir}" fork="true">
             <arg value="$JAVA_OPTS  -cp"/>
