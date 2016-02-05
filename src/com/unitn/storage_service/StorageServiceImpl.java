@@ -15,7 +15,6 @@ import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URISyntaxException;
-import java.util.Base64;
 import java.util.List;
 
 /**
@@ -72,7 +71,7 @@ public class StorageServiceImpl implements StorageService {
     public void createUser(UserData user) {
         try {
             Project project = new Project();
-            project.Content = Base64.getEncoder().encodeToString((user.getIdTelegram()+"").getBytes())+"-tasks";
+            project.Content = user.getIdTelegram()+"-tasks";
             project = adapterService.createProject(project).execute().body();
             user.setProjectId(project.Id);
             localDB.createUser(user);
