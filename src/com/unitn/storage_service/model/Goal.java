@@ -1,6 +1,6 @@
 package com.unitn.storage_service.model;
 
-import com.unitn.adapter_service.Task;
+import com.unitn.adapter_service.data.Task;
 import lombok.Getter;
 import lombok.Setter;
 

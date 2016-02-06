@@ -1,4 +1,4 @@
-package com.unitn.adapter_service;
+package com.unitn.adapter_service.data;
 
 import lombok.Data;
 

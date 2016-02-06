@@ -2,8 +2,10 @@ package com.unitn.storage_service;
 
 import com.unitn.adapter_service.AdapterService;
 import com.unitn.adapter_service.AdapterServiceImpl;
-import com.unitn.adapter_service.Project;
-import com.unitn.adapter_service.Task;
+import com.unitn.adapter_service.data.Project;
+import com.unitn.adapter_service.data.Quote;
+import com.unitn.adapter_service.data.Task;
+import com.unitn.adapter_service.data.XkcdComic;
 import com.unitn.local_database.LocalDB;
 import com.unitn.local_database.LocalDatabase;
 import com.unitn.local_database.MeasureData;
@@ -15,6 +17,7 @@ import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,23 +47,21 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public Integer getFromToStepsData(long t1, long t2) {
-        return localDB.totalSteps(t1, t2);
+    public Integer getFromToStepsData(int telegramId, long t1, long t2) {
+        return localDB.totalSteps(telegramId, t1, t2);
     }
 
     @Override
     public List<Goal> getGoals(int telegramId) {
 
         UserData userData = localDB.getUser(telegramId);
-        System.out.println("userData.getIdTelegram() = " + userData.getIdTelegram());
         long projectId = userData.getProjectId();
-        System.out.println("projectId = " + projectId);
         List<Goal> goals = null;
 
         try {
             List<Task> ls = adapterService.getTaskList(projectId).execute().body();
+            goals = new ArrayList<>(ls.size());
             for ( Task t: ls ) {
-                System.out.println("t.getContent() = " + t.getContent());
                 goals.add(t.toGoal());
             }
         } catch (IOException e) {
@@ -107,6 +108,39 @@ public class StorageServiceImpl implements StorageService {
             e.printStackTrace();
         }
     }
+
+
+
+    @Override
+    public XkcdComic getRandomComic() {
+        try {
+            return adapterService.randomComic().execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Quote getMovieQuote() {
+        try {
+            return adapterService.movieQuote().execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Quote getFamousQuote() {
+        try {
+            return adapterService.famousQuote().execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
     public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException {
