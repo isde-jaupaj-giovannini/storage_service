@@ -15,6 +15,7 @@ import java.util.Calendar;
 public class Goal {
     private String Content;
     private String DueDate;
+    private String CreatedDate;
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 
     public Task toTask(){

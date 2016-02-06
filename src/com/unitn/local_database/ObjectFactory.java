@@ -25,17 +25,19 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _GetUserResponse_QNAME = new QName("http://local_database.unitn.com/", "getUserResponse");
-    private final static QName _UserExists_QNAME = new QName("http://local_database.unitn.com/", "userExists");
     private final static QName _CreateUserResponse_QNAME = new QName("http://local_database.unitn.com/", "createUserResponse");
     private final static QName _GetLatestDataResponse_QNAME = new QName("http://local_database.unitn.com/", "getLatestDataResponse");
     private final static QName _GetDescriptionResponse_QNAME = new QName("http://local_database.unitn.com/", "getDescriptionResponse");
     private final static QName _GetUser_QNAME = new QName("http://local_database.unitn.com/", "getUser");
-    private final static QName _UserExistsResponse_QNAME = new QName("http://local_database.unitn.com/", "userExistsResponse");
     private final static QName _SaveData_QNAME = new QName("http://local_database.unitn.com/", "saveData");
-    private final static QName _CreateUser_QNAME = new QName("http://local_database.unitn.com/", "createUser");
-    private final static QName _SaveDataResponse_QNAME = new QName("http://local_database.unitn.com/", "saveDataResponse");
+    private final static QName _TotalSteps_QNAME = new QName("http://local_database.unitn.com/", "totalSteps");
     private final static QName _GetDescription_QNAME = new QName("http://local_database.unitn.com/", "getDescription");
     private final static QName _GetLatestData_QNAME = new QName("http://local_database.unitn.com/", "getLatestData");
+    private final static QName _UserExists_QNAME = new QName("http://local_database.unitn.com/", "userExists");
+    private final static QName _TotalStepsResponse_QNAME = new QName("http://local_database.unitn.com/", "totalStepsResponse");
+    private final static QName _UserExistsResponse_QNAME = new QName("http://local_database.unitn.com/", "userExistsResponse");
+    private final static QName _CreateUser_QNAME = new QName("http://local_database.unitn.com/", "createUser");
+    private final static QName _SaveDataResponse_QNAME = new QName("http://local_database.unitn.com/", "saveDataResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.unitn.local_database
@@ -50,14 +52,6 @@ public class ObjectFactory {
      */
     public GetUserResponse createGetUserResponse() {
         return new GetUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link UserExists }
-     * 
-     */
-    public UserExists createUserExists() {
-        return new UserExists();
     }
 
     /**
@@ -93,14 +87,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserExistsResponse }
-     * 
-     */
-    public UserExistsResponse createUserExistsResponse() {
-        return new UserExistsResponse();
-    }
-
-    /**
      * Create an instance of {@link SaveData }
      * 
      */
@@ -109,19 +95,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CreateUser }
+     * Create an instance of {@link TotalSteps }
      * 
      */
-    public CreateUser createCreateUser() {
-        return new CreateUser();
-    }
-
-    /**
-     * Create an instance of {@link SaveDataResponse }
-     * 
-     */
-    public SaveDataResponse createSaveDataResponse() {
-        return new SaveDataResponse();
+    public TotalSteps createTotalSteps() {
+        return new TotalSteps();
     }
 
     /**
@@ -138,6 +116,46 @@ public class ObjectFactory {
      */
     public GetLatestData createGetLatestData() {
         return new GetLatestData();
+    }
+
+    /**
+     * Create an instance of {@link UserExists }
+     * 
+     */
+    public UserExists createUserExists() {
+        return new UserExists();
+    }
+
+    /**
+     * Create an instance of {@link TotalStepsResponse }
+     * 
+     */
+    public TotalStepsResponse createTotalStepsResponse() {
+        return new TotalStepsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UserExistsResponse }
+     * 
+     */
+    public UserExistsResponse createUserExistsResponse() {
+        return new UserExistsResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateUser }
+     * 
+     */
+    public CreateUser createCreateUser() {
+        return new CreateUser();
+    }
+
+    /**
+     * Create an instance of {@link SaveDataResponse }
+     * 
+     */
+    public SaveDataResponse createSaveDataResponse() {
+        return new SaveDataResponse();
     }
 
     /**
@@ -163,15 +181,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "getUserResponse")
     public JAXBElement<GetUserResponse> createGetUserResponse(GetUserResponse value) {
         return new JAXBElement<GetUserResponse>(_GetUserResponse_QNAME, GetUserResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UserExists }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "userExists")
-    public JAXBElement<UserExists> createUserExists(UserExists value) {
-        return new JAXBElement<UserExists>(_UserExists_QNAME, UserExists.class, null, value);
     }
 
     /**
@@ -211,15 +220,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UserExistsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "userExistsResponse")
-    public JAXBElement<UserExistsResponse> createUserExistsResponse(UserExistsResponse value) {
-        return new JAXBElement<UserExistsResponse>(_UserExistsResponse_QNAME, UserExistsResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SaveData }{@code >}}
      * 
      */
@@ -229,21 +229,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TotalSteps }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "createUser")
-    public JAXBElement<CreateUser> createCreateUser(CreateUser value) {
-        return new JAXBElement<CreateUser>(_CreateUser_QNAME, CreateUser.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveDataResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "saveDataResponse")
-    public JAXBElement<SaveDataResponse> createSaveDataResponse(SaveDataResponse value) {
-        return new JAXBElement<SaveDataResponse>(_SaveDataResponse_QNAME, SaveDataResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "totalSteps")
+    public JAXBElement<TotalSteps> createTotalSteps(TotalSteps value) {
+        return new JAXBElement<TotalSteps>(_TotalSteps_QNAME, TotalSteps.class, null, value);
     }
 
     /**
@@ -262,6 +253,51 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "getLatestData")
     public JAXBElement<GetLatestData> createGetLatestData(GetLatestData value) {
         return new JAXBElement<GetLatestData>(_GetLatestData_QNAME, GetLatestData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserExists }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "userExists")
+    public JAXBElement<UserExists> createUserExists(UserExists value) {
+        return new JAXBElement<UserExists>(_UserExists_QNAME, UserExists.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TotalStepsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "totalStepsResponse")
+    public JAXBElement<TotalStepsResponse> createTotalStepsResponse(TotalStepsResponse value) {
+        return new JAXBElement<TotalStepsResponse>(_TotalStepsResponse_QNAME, TotalStepsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserExistsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "userExistsResponse")
+    public JAXBElement<UserExistsResponse> createUserExistsResponse(UserExistsResponse value) {
+        return new JAXBElement<UserExistsResponse>(_UserExistsResponse_QNAME, UserExistsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "createUser")
+    public JAXBElement<CreateUser> createCreateUser(CreateUser value) {
+        return new JAXBElement<CreateUser>(_CreateUser_QNAME, CreateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveDataResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://local_database.unitn.com/", name = "saveDataResponse")
+    public JAXBElement<SaveDataResponse> createSaveDataResponse(SaveDataResponse value) {
+        return new JAXBElement<SaveDataResponse>(_SaveDataResponse_QNAME, SaveDataResponse.class, null, value);
     }
 
 }

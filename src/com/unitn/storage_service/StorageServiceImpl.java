@@ -44,16 +44,23 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
+    public Integer getFromToStepsData(long t1, long t2) {
+        return localDB.totalSteps(t1, t2);
+    }
+
+    @Override
     public List<Goal> getGoals(int telegramId) {
 
         UserData userData = localDB.getUser(telegramId);
+        System.out.println("userData.getIdTelegram() = " + userData.getIdTelegram());
         long projectId = userData.getProjectId();
-
+        System.out.println("projectId = " + projectId);
         List<Goal> goals = null;
 
         try {
             List<Task> ls = adapterService.getTaskList(projectId).execute().body();
             for ( Task t: ls ) {
+                System.out.println("t.getContent() = " + t.getContent());
                 goals.add(t.toGoal());
             }
         } catch (IOException e) {

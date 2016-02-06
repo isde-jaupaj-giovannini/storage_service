@@ -48,4 +48,8 @@ public interface StorageService {
     @WebMethod()
     @WebResult()
     List<Goal> getGoals(int telegramId);
+
+    @WebMethod()
+    @WebResult()
+    Integer getFromToStepsData(long t1, long t2);
 }
