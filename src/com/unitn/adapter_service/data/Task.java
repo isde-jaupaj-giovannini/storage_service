@@ -1,4 +1,4 @@
-package com.unitn.adapter_service;
+package com.unitn.adapter_service.data;
 
 import com.unitn.storage_service.model.Goal;
 import lombok.Data;
