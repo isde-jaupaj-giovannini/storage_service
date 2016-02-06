@@ -44,6 +44,26 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
+    public List<Goal> getGoals(int telegramId) {
+
+        UserData userData = localDB.getUser(telegramId);
+        long projectId = userData.getProjectId();
+
+        List<Goal> goals = null;
+
+        try {
+            List<Task> ls = adapterService.getTaskList(projectId).execute().body();
+            for ( Task t: ls ) {
+                goals.add(t.toGoal());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return goals;
+    }
+
+    @Override
     public boolean userExists(int telegramId) {
         return localDB.userExists(telegramId);
     }

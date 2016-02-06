@@ -1,5 +1,6 @@
 package com.unitn.adapter_service;
 
+import com.unitn.storage_service.model.Goal;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,4 +28,13 @@ public class Task {
     public Integer Priority;
     public String CreatedDate;
     public Boolean Deleted;
+
+
+    public Goal toGoal(){
+        Goal g = new Goal();
+        g.setContent(this.getContent());
+        g.setDueDate(this.getDueDate());
+
+        return g;
+    }
 }

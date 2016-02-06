@@ -44,4 +44,8 @@ public interface StorageService {
     @WebMethod()
     @WebResult()
     boolean saveGoal(int telegramId, Goal goal);
+
+    @WebMethod()
+    @WebResult()
+    List<Goal> getGoals(int telegramId);
 }
