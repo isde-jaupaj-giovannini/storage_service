@@ -27,21 +27,18 @@ public interface LocalDB {
 
     /**
      * 
-     * @param arg1
      * @param arg0
      * @return
-     *     returns java.util.List<com.unitn.local_database.MeasureData>
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getLatestData", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetLatestData")
-    @ResponseWrapper(localName = "getLatestDataResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetLatestDataResponse")
-    @Action(input = "http://local_database.unitn.com/LocalDB/getLatestDataRequest", output = "http://local_database.unitn.com/LocalDB/getLatestDataResponse")
-    public List<MeasureData> getLatestData(
+    @RequestWrapper(localName = "userExists", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.UserExists")
+    @ResponseWrapper(localName = "userExistsResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.UserExistsResponse")
+    @Action(input = "http://local_database.unitn.com/LocalDB/userExistsRequest", output = "http://local_database.unitn.com/LocalDB/userExistsResponse")
+    public boolean userExists(
         @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
+        int arg0);
 
     /**
      * 
@@ -69,18 +66,21 @@ public interface LocalDB {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns java.util.List<com.unitn.local_database.MeasureData>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "userExists", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.UserExists")
-    @ResponseWrapper(localName = "userExistsResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.UserExistsResponse")
-    @Action(input = "http://local_database.unitn.com/LocalDB/userExistsRequest", output = "http://local_database.unitn.com/LocalDB/userExistsResponse")
-    public boolean userExists(
+    @RequestWrapper(localName = "getLatestData", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetLatestData")
+    @ResponseWrapper(localName = "getLatestDataResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetLatestDataResponse")
+    @Action(input = "http://local_database.unitn.com/LocalDB/getLatestDataRequest", output = "http://local_database.unitn.com/LocalDB/getLatestDataResponse")
+    public List<MeasureData> getLatestData(
         @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1);
 
     /**
      * 

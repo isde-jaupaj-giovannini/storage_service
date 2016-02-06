@@ -1,5 +1,9 @@
 package com.unitn.adapter_service;
 
+import com.unitn.adapter_service.data.Project;
+import com.unitn.adapter_service.data.Quote;
+import com.unitn.adapter_service.data.Task;
+import com.unitn.adapter_service.data.XkcdComic;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -25,7 +29,16 @@ public interface AdapterService {
     @PUT("adapter_service/todo/{id}")
     Call<Task> updateTask(@Path("id") long taskId, @Body Task task);
 
+    //Xkcd
+    @GET("adapter_service/xkcd/random")
+    Call<XkcdComic> randomComic();
 
+    //Quotes
+    @GET("adapter_service/quotes/famous")
+    Call<Quote> famousQuote();
+
+    @GET("adapter_service/quotes/movie")
+    Call<Quote> movieQuote();
 
 
 }

@@ -1,5 +1,7 @@
 package com.unitn.storage_service;
 
+import com.unitn.adapter_service.data.Quote;
+import com.unitn.adapter_service.data.XkcdComic;
 import com.unitn.local_database.MeasureData;
 import com.unitn.local_database.UserData;
 import com.unitn.storage_service.model.Goal;
@@ -52,4 +54,17 @@ public interface StorageService {
     @WebMethod()
     @WebResult()
     Integer getFromToStepsData(long t1, long t2);
+
+
+    @WebMethod
+    @WebResult
+    XkcdComic getRandomComic();
+
+    @WebResult
+    @WebMethod
+    Quote getMovieQuote();
+
+    @WebResult
+    @WebMethod
+    Quote getFamousQuote();
 }
