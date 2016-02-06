@@ -44,6 +44,11 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
+    public Integer getFromToStepsData(long t1, long t2) {
+        return localDB.totalSteps(t1, t2);
+    }
+
+    @Override
     public List<Goal> getGoals(int telegramId) {
 
         UserData userData = localDB.getUser(telegramId);

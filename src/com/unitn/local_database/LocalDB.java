@@ -84,6 +84,24 @@ public interface LocalDB {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.lang.Integer
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "totalSteps", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.TotalSteps")
+    @ResponseWrapper(localName = "totalStepsResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.TotalStepsResponse")
+    @Action(input = "http://local_database.unitn.com/LocalDB/totalStepsRequest", output = "http://local_database.unitn.com/LocalDB/totalStepsResponse")
+    public Integer totalSteps(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        long arg1);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns com.unitn.local_database.UserData

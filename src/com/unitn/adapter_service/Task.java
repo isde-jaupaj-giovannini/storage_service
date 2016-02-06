@@ -34,7 +34,7 @@ public class Task {
         Goal g = new Goal();
         g.setContent(this.getContent());
         g.setDueDate(this.getDueDate());
-
+        g.setCreatedDate(this.getCreatedDate());
         return g;
     }
 }
