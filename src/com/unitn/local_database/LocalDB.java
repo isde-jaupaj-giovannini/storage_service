@@ -27,30 +27,6 @@ public interface LocalDB {
 
     /**
      * 
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getDescription", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetDescription")
-    @ResponseWrapper(localName = "getDescriptionResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetDescriptionResponse")
-    @Action(input = "http://local_database.unitn.com/LocalDB/getDescriptionRequest", output = "http://local_database.unitn.com/LocalDB/getDescriptionResponse")
-    public String getDescription();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "saveData", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.SaveData")
-    @ResponseWrapper(localName = "saveDataResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.SaveDataResponse")
-    @Action(input = "http://local_database.unitn.com/LocalDB/saveDataRequest", output = "http://local_database.unitn.com/LocalDB/saveDataResponse")
-    public void saveData(
-        @WebParam(name = "arg0", targetNamespace = "")
-        MeasureData arg0);
-
-    /**
-     * 
      * @param arg1
      * @param arg0
      * @return
@@ -81,6 +57,30 @@ public interface LocalDB {
     public boolean userExists(
         @WebParam(name = "arg0", targetNamespace = "")
         int arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getDescription", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetDescription")
+    @ResponseWrapper(localName = "getDescriptionResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.GetDescriptionResponse")
+    @Action(input = "http://local_database.unitn.com/LocalDB/getDescriptionRequest", output = "http://local_database.unitn.com/LocalDB/getDescriptionResponse")
+    public String getDescription();
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "saveData", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.SaveData")
+    @ResponseWrapper(localName = "saveDataResponse", targetNamespace = "http://local_database.unitn.com/", className = "com.unitn.local_database.SaveDataResponse")
+    @Action(input = "http://local_database.unitn.com/LocalDB/saveDataRequest", output = "http://local_database.unitn.com/LocalDB/saveDataResponse")
+    public void saveData(
+        @WebParam(name = "arg0", targetNamespace = "")
+        MeasureData arg0);
 
     /**
      * 

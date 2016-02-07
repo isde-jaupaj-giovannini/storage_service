@@ -50,6 +50,10 @@ public interface StorageService {
 
     @WebMethod()
     @WebResult()
+    Goal updateGoal(Goal goal);
+
+    @WebMethod()
+    @WebResult()
     List<Goal> getGoals(int telegramId);
 
     @WebMethod()

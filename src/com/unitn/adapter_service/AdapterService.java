@@ -23,8 +23,8 @@ public interface AdapterService {
     @POST("adapter_service/todo/task")
     Call<Task> createTask(@Body Task task);
 
-    @PUT("adapter_service/todo/{id}")
-    Call<Task> updateTask(@Path("id") long taskId, @Body Task task);
+    @PUT("adapter_service/todo")
+    Call<Task> updateTask(@Body Task task);
 
     //Xkcd
     @GET("adapter_service/xkcd/random")

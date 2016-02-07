@@ -79,6 +79,20 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
+    public Goal updateGoal(Goal goal) {
+        Goal resp = null;
+        try {
+            Task task = adapterService.updateTask( goal.toTask()).execute().body();
+            resp = task.toGoal();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return resp;
+    }
+
+    @Override
     public boolean saveGoal(int telegramId, Goal goal) {
         UserData user = localDB.getUser(telegramId);
         Task task = goal.toTask();

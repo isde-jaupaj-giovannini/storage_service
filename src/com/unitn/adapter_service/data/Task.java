@@ -32,9 +32,11 @@ public class Task {
 
     public Goal toGoal(){
         Goal g = new Goal();
+        g.setId(this.getId());
         g.setContent(this.getContent());
         g.setDueDate(this.getDueDate());
         g.setCreatedDate(this.getCreatedDate());
+        g.setChecked(this.getChecked());
         return g;
     }
 }

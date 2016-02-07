@@ -13,15 +13,19 @@ import java.util.Calendar;
 @Getter
 @Setter
 public class Goal {
+    private long Id;
     private String Content;
     private String DueDate;
     private String CreatedDate;
+    private Boolean Checked;
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 
     public Task toTask(){
         Task t = new Task();
+        t.setId(this.getId());
         t.setContent(this.Content);
         t.setDueDate(this.DueDate);
+        t.setChecked(this.getChecked());
 
         Calendar calendar = Calendar.getInstance();
         if(DueDate.contains("WEEK")){
