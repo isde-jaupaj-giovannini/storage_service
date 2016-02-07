@@ -1,9 +1,6 @@
 package com.unitn.adapter_service;
 
-import com.unitn.adapter_service.data.Project;
-import com.unitn.adapter_service.data.Quote;
-import com.unitn.adapter_service.data.Task;
-import com.unitn.adapter_service.data.XkcdComic;
+import com.unitn.adapter_service.data.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -40,5 +37,7 @@ public interface AdapterService {
     @GET("adapter_service/quotes/movie")
     Call<Quote> movieQuote();
 
+    @POST("adapter_service/chart")
+    Call<Chart> getChart(@Body List<Integer> data);
 
 }

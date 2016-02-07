@@ -1,5 +1,6 @@
 package com.unitn.storage_service;
 
+import com.unitn.adapter_service.data.Chart;
 import com.unitn.adapter_service.data.Quote;
 import com.unitn.adapter_service.data.XkcdComic;
 import com.unitn.local_database.MeasureData;
@@ -67,4 +68,8 @@ public interface StorageService {
     @WebResult
     @WebMethod
     Quote getFamousQuote();
+
+    @WebResult
+    @WebMethod
+    Chart getChart(List<Integer>datas);
 }
