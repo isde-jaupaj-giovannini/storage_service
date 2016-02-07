@@ -20,6 +20,9 @@ public interface AdapterService {
     @GET("adapter_service/todo/{id}")
     Call<List<Task>> getTaskList(@Path("id") long projectId);
 
+    @GET("adapter_service/todo/done/{id}")
+    Call<List<Task>> getDoneTaskList(@Path("id") long projectId);
+
     @POST("adapter_service/todo/task")
     Call<Task> createTask(@Body Task task);
 
