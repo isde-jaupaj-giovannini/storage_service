@@ -42,8 +42,8 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public List<MeasureData> getLatestData(int telegramId, int limit) {
-        return localDB.getLatestData(telegramId, limit);
+    public List<MeasureData> getLatestData(int telegramId, long timestamp) {
+        return localDB.getLatestData(telegramId, timestamp);
     }
 
     @Override

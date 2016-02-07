@@ -29,7 +29,7 @@ public interface StorageService {
 
     @WebMethod()
     @WebResult()
-    List<MeasureData> getLatestData(int telegramId, int limit);
+    List<MeasureData> getLatestData(int telegramId, long timestamp);
 
     @WebMethod()
     @WebResult()

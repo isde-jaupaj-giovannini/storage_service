@@ -65,7 +65,7 @@ public interface LocalDB {
         @WebParam(name = "arg0", targetNamespace = "")
         int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
+        long arg1);
 
     /**
      * 
